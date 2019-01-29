@@ -6,7 +6,7 @@ var svg = d3.select("body")
 margin = {top: 50, right: 45, bottom: 20, left: 45};
 width = +svg.attr("width") - margin.left - margin.right;
 height = +svg.attr("height") - margin.top - margin.bottom;
-g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var dataSet = [
     {"year": 2001, "value": 6.0},
@@ -22,9 +22,11 @@ var dataSet = [
     {"year": 2011, "value": 8.9},
     ];
 
-var rectPadding = 19;
+var rectPadding = width/(2*dataSet.length);
 
 var formatNumber = d3.format(",d");
+
+var yMax = Math.round(d3.max(dataSet, function(d){return d.value}))
 
 var x = d3.scaleTime()
     .domain([d3.min(d3.extent(dataSet, function (d) { return new Date(parseInt(d.year),0); }))
@@ -32,7 +34,7 @@ var x = d3.scaleTime()
     .range([rectPadding, width-rectPadding]);
 
 var y = d3.scaleLinear()
-    .domain([0, Math.round(d3.max(dataSet, function(d){return d.value}))])
+    .domain([0, yMax])
     .range([height, 0]);
 
 var xAxis = d3.axisBottom(x)
@@ -41,7 +43,7 @@ var xAxis = d3.axisBottom(x)
 
 var yAxis = d3.axisRight(y)
     .tickSize(width)
-    .tickValues([0,2,4,6,8,10,12])
+    .ticks(yMax/2)
     .tickFormat(function(d) {
         var s = formatNumber(d);
         return s;
@@ -58,7 +60,7 @@ g.append("g")
 g.append("g")
     .call(customYAxis)
     .selectAll("text")
-    .attr("y", 6)
+    .attr("y", 0)
     .attr("x", -6)
     .style("text-anchor", "end")
     .style("font-size","10px");
@@ -69,23 +71,20 @@ g.selectAll("rect")
     .enter()
     .append('rect')
     .attr("x",function(d,i){
-        console.log(x(d.year));
         return (i+0.5)*rectPadding+(width/dataSet.length-rectPadding)*i;
     })
     .attr("y",function(d){
-        return y(d.value);
+        return height-height*(d.value/yMax);
     })
     .attr("width", width/dataSet.length-rectPadding)
     .attr("height",function(d){
-        return height*(d.value/12);
+        return height*(d.value/yMax);
     })
     .attr("fill","red");
 
 function customYAxis(g) {
     g.call(yAxis);
     g.select(".domain").remove();
-    g.selectAll(".tick:not(:first-of-type) line").attr("stroke", "#777").attr("stroke-array", "2,2");
-    g.selectAll(".tick text").attr("x", 4).attr("dy", -4);
 }
 
 svg.append("svg:image")
