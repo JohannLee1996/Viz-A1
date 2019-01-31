@@ -108,5 +108,3 @@ svg.append("g")
     .append('path')
     .attr('d', arcGenerator)
     .attr('fill','red');
-
-
