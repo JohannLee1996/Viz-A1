@@ -57,5 +57,38 @@ for(k=0;k<dataSet.length;k++){
         .attr('d', arcGenerator)
         .attr('fill','red');
 }
-   
+
+g.selectAll(".text1")
+    .data(dataSet)
+    .enter()
+    .append('g')
+    .attr("transform", function(d,i){
+        return "translate("+ ((i*padding+i*width/dataSet.length)+(width/(3*dataSet.length))) +","+ ((height/2)+(width/(dataSet.length))) +")";
+})
+    .attr('width',width/(dataSet.length))
+    .append('text')
+    .attr("class","text1")
+    // .attr("x",function (d,i) {
+    //     return ((i*padding+i*width/dataSet.length)+(width/(3*dataSet.length)));
+    // })
+    // .attr("y",((height/2)+(width/(dataSet.length))))
+    .text(function(d){ return d.name;})
+    .style('font-size','8px')
+    .style('font-weight','bold')
+    .attr("text-anchor","middle");
+
+g.selectAll(".text2")
+    .data(dataSet)
+    .enter()
+    .append('text')
+    .attr("class","text2")
+    .attr("x",function (d,i) {
+        return ((i*padding+i*width/dataSet.length)+(width/(3*dataSet.length)));
+    })
+    .attr("y",((height/2)+(width/(dataSet.length)))-10)
+    .text(function(d){ return d.value;})
+    .style('font-size','8px')
+    .style('font-weight','bold')
+    .attr("text-anchor","start");
+
 
