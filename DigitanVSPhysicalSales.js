@@ -43,14 +43,10 @@ g.selectAll("rect")
     .append('rect')
     .attr("x",0)
     .attr("y",function(d,i){
-        //console.log(i);
         return (i+0.5)*rectPadding+(i)*((height-dataSet.length*rectPadding)/dataSet.length);
     })
     .attr("width",width)
-    .attr("height",function(d,i){
-        //console.log(i);
-        return (height-dataSet.length*rectPadding)/dataSet.length;
-    })
+    .attr("height", (height-dataSet.length*rectPadding)/dataSet.length)
     .attr("fill","black");
 
 g.selectAll(".blackRect")
@@ -64,10 +60,7 @@ g.selectAll(".blackRect")
         return (i+0.5)*rectPadding+(i)*((height-dataSet.length*rectPadding)/dataSet.length);
     })
     .attr("width",function(d){return width*(d.value)/100;})
-    .attr("height",function(d,i){
-        //console.log(i);
-        return (height-dataSet.length*rectPadding)/dataSet.length;
-    })
+    .attr("height", (height-dataSet.length*rectPadding)/dataSet.length)
     .attr("fill","red");
 
 g.selectAll(".redRect")
@@ -77,13 +70,14 @@ g.selectAll(".redRect")
     .attr('x',5)
     .attr('y',function(d,i){
         //console.log(i);
-        return 0.8*rectPadding+(i+0.5)*rectPadding+(i)*((height-dataSet.length*rectPadding)/dataSet.length);
+        return (i+1)*rectPadding+(i)*((height-dataSet.length*rectPadding)/dataSet.length);
     })
     .text(function(d){
         return d.value;
     })
     .attr('fill','white')
-    .style("text-anchor", "start");
+    .style("text-anchor", "start")
+    .style("alignment-baseline","central");
 
 g.selectAll(".blackRect")
     .data(dataSet)
@@ -91,13 +85,14 @@ g.selectAll(".blackRect")
     .append('text')
     .attr('x',350)
     .attr('y',function(d,i){
-        return 0.8*rectPadding+(i+0.5)*rectPadding+(i)*((height-dataSet.length*rectPadding)/dataSet.length);
+        return (i+1)*rectPadding+(i)*((height-dataSet.length*rectPadding)/dataSet.length);
     })
     .text(function(d){
         return 100-d.value;
     })
     .attr('fill','white')
-    .style("text-anchor", "end");
+    .style("text-anchor", "end")
+    .style("alignment-baseline","central");
 
 function customYAxis(g) {
     g.call(yAxis);
