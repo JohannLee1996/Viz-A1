@@ -3,7 +3,7 @@ var svg = d3.select("body")
     .attr("width","480")
     .attr("height","260")
     .style("display","block");
-margin = {top: 60, right: 60, bottom: 60, left: 60};
+margin = {top: 60, right: 50, bottom: 60, left: 50};
 width = +svg.attr("width") - margin.left - margin.right;
 height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -68,10 +68,6 @@ g.selectAll(".text1")
     .attr('width',width/(dataSet.length))
     .append('text')
     .attr("class","text1")
-    // .attr("x",function (d,i) {
-    //     return ((i*padding+i*width/dataSet.length)+(width/(3*dataSet.length)));
-    // })
-    // .attr("y",((height/2)+(width/(dataSet.length))))
     .text(function(d){ return d.name;})
     .style('font-size','8px')
     .style('font-weight','bold')
@@ -83,12 +79,34 @@ g.selectAll(".text2")
     .append('text')
     .attr("class","text2")
     .attr("x",function (d,i) {
-        return ((i*padding+i*width/dataSet.length)+(width/(3*dataSet.length)));
+        return 2+((i*padding+i*width/dataSet.length)+(width/(3*dataSet.length)));
     })
     .attr("y",((height/2)+(width/(dataSet.length)))-10)
     .text(function(d){ return d.value;})
-    .style('font-size','8px')
+    .style('font-size','10px')
     .style('font-weight','bold')
     .attr("text-anchor","start");
+
+svg.append('text')
+    .attr('x',30)
+    .attr('y',70)
+    .text('U.S HOUSEHOLDS THAT OWN AT LEAST ONE OF THE FOLLOWING')
+    .style('font-weight','bold')
+    .style('font-size',14);
+
+svg.append('text')
+    .attr('x',30)
+    .attr('y',85)
+    .text('DEVICES PLAY GAMES ON THEIR...')
+    .style('font-weight','bold')
+    .style('font-size',14);
+
+svg.append('text')
+    .attr('x',30)
+    .attr('y',100)
+    .text('in %')
+    .style('font-weight','bold')
+    .style('font-size',10);
+
 
 

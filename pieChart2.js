@@ -103,7 +103,21 @@ svg.selectAll('.labels')
     })
     .style('font-size',10)
     .style('alignment-baseline','hanging')
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr('x',30)
+    .attr('y',35)
+    .text('VIDEO GAME SALES 2011, BY GENRE')
     .style('font-weight','bold')
+    .style('font-size',14)
+
+svg.append('text')
+    .attr('x',30)
+    .attr('y',50)
+    .text('in %')
+    .style('font-weight','bold')
+    .style('font-size',10)
 
 
 

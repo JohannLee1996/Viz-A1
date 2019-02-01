@@ -94,17 +94,20 @@ svg.append("text")
     .attr("x","30")
     .attr("y","270")
     .attr('font-size','11px')
-    .text("*mobile phone users who play games on mobile phones at least once per month");
+    .text("*mobile phone users who play games on mobile phones at least once per month")
+    .attr('font-weight','bold');
 
 svg.append("text")
     .attr("x","30")
     .attr("y","24")
     .style('font-size','15px')
-    .text("U.S. MOBILE GAMERS*");
+    .text("U.S. MOBILE GAMERS*")
+    .attr('font-weight','bold');
 
 svg.append("text")
     .attr("x","30")
     .attr("y","36")
     .style('font-size','12px')
-    .text("in million");
+    .text("in million")
+    .attr('font-weight','bold');
 
