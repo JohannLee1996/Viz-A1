@@ -45,7 +45,7 @@ for(j=0;j<dataSet.length;j++){
         .data(pieGenerator[j])
         .enter()
         .append('path')
-        .attr("transform", "translate("+ ((j*padding+j*width/dataSet.length)+(width/(3*dataSet.length))) +","+ height/2 +")")
+        .attr("transform", "translate("+ ((width/(5*dataSet.length))) +","+ height/2 +")")
         .attr('d', segments)
         .attr('fill', function (d,i) {
             return dataSet[j][i].color;
@@ -63,7 +63,7 @@ for(j=0;j<dataSet.length;j++){
         .each(function(d) {
             var centroid = segments.centroid(d);
             d3.select(this)
-                .attr('x', centroid[0]+((j*padding+j*width/dataSet.length)+(width/(3*dataSet.length))))
+                .attr('x', centroid[0]+((width/(5*dataSet.length))))
                 .attr('y', centroid[1]+height/2)
                 .attr('text-anchor','middle')
                 .attr('dy', '0.33em');
@@ -73,8 +73,37 @@ for(j=0;j<dataSet.length;j++){
         })
         .attr('fill', 'white')
         .style('font-size','20')
-
 }
+
+svg.selectAll('rect')
+    .data(dataSet[0])
+    .enter()
+    .append('rect')
+    .attr('x',margin.left+width/2)
+    .attr('y',function (d,i) {
+        return height/2+i*textPadding;
+    })
+    .attr('width',15)
+    .attr('height',15)
+    .attr('fill', function (d) {
+        return d.color;
+    })
+
+
+svg.selectAll('.labels')
+    .data(dataSet[0])
+    .enter()
+    .append('text')
+    .attr('x',margin.left+width/2+20)
+    .attr('y',function (d,i) {
+        return height/2+3+i*textPadding;
+    })
+    .text(function (d) {
+        return d.label;
+    })
+    .style('font-size',10)
+    .style('alignment-baseline','hanging')
+    .style('font-weight','bold')
 
 
 
