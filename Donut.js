@@ -92,14 +92,14 @@ svg.append('text')
     .attr('y',70)
     .text('U.S HOUSEHOLDS THAT OWN AT LEAST ONE OF THE FOLLOWING')
     .style('font-weight','bold')
-    .style('font-size',14);
+    .style('font-size',13);
 
 svg.append('text')
     .attr('x',30)
     .attr('y',85)
     .text('DEVICES PLAY GAMES ON THEIR...')
     .style('font-weight','bold')
-    .style('font-size',14);
+    .style('font-size',13);
 
 svg.append('text')
     .attr('x',30)
@@ -107,6 +107,35 @@ svg.append('text')
     .text('in %')
     .style('font-weight','bold')
     .style('font-size',10);
+
+svg.append('text')
+    .attr("x",30)
+    .attr('y',20)
+    .text('FOR NOW, ')
+    .style('font-size',13)
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",100)
+    .attr('y',20)
+    .attr('fill','red')
+    .text('CONSOLE REMAINS THE MOST POPULAR ')
+    .style('font-size',13)
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",370)
+    .attr('y',20)
+    .text('GAMING')
+    .style('font-size',13)
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",30)
+    .attr('y',40)
+    .text('DEVICES IN THE U. S.')
+    .style('font-size',13)
+    .style('font-weight','bold');
 
 
 

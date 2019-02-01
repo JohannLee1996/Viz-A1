@@ -1,15 +1,15 @@
 var svg = d3.select("body")
     .append("svg")
     .attr("width","480")
-    .attr("height","270")
+    .attr("height","320")
     .style('display', 'block');
-margin = {top: 45, right: 45, bottom: 30, left: 45};
+margin = {top: 95, right: 45, bottom: 30, left: 45};
 width = +svg.attr("width") - margin.left - margin.right;
 height = +svg.attr("height") - margin.top - margin.bottom;
 
 svg.append("svg:image")
     .attr("x","320")
-    .attr("y","0")
+    .attr("y","50")
     .attr("width","50")
     .attr("height","50")
     .attr("xlink:href", "img/image10.jpg")
@@ -92,22 +92,51 @@ function customYAxis(g) {
 
 svg.append("text")
     .attr("x","30")
-    .attr("y","270")
+    .attr("y","320")
     .attr('font-size','11px')
     .text("*mobile phone users who play games on mobile phones at least once per month")
     .attr('font-weight','bold');
 
 svg.append("text")
     .attr("x","30")
-    .attr("y","24")
+    .attr("y","74")
     .style('font-size','15px')
     .text("U.S. MOBILE GAMERS*")
     .attr('font-weight','bold');
 
 svg.append("text")
     .attr("x","30")
-    .attr("y","36")
+    .attr("y","86")
     .style('font-size','12px')
     .text("in million")
     .attr('font-weight','bold');
+
+svg.append('text')
+    .attr("x",30)
+    .attr('y',20)
+    .text('BUT ')
+    .style('font-size',13)
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",60)
+    .attr('y',20)
+    .attr('fill','red')
+    .text('SMARTPHONE GAMING')
+    .style('font-size',13)
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",220)
+    .attr('y',20)
+    .text(' IS EXPECTED TO GET BIGGER IN THE ')
+    .style('font-size',13)
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",30)
+    .attr('y',40)
+    .text('NEXT FEW YEARS.')
+    .style('font-size',13)
+    .style('font-weight','bold');
 

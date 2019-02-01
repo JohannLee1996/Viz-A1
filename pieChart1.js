@@ -1,9 +1,9 @@
 var svg = d3.select("body")
     .append("svg")
     .attr("width","480")
-    .attr("height","340")
+    .attr("height","450")
     .style('display', 'block');
-margin = {top: 45, right: 45, bottom: 90, left: 45};
+margin = {top: 155, right: 45, bottom: 90, left: 45};
 width = +svg.attr("width") - margin.left - margin.right;
 height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -85,7 +85,7 @@ svg.selectAll('rect')
     .append('rect')
     .attr('x',margin.left+width/7)
     .attr('y',function (d,i) {
-        return height+10+i*textPadding;
+        return height+120+i*textPadding;
     })
     .attr('width',15)
     .attr('height',15)
@@ -100,7 +100,7 @@ svg.selectAll('.labels')
     .append('text')
     .attr('x',margin.left+width/7+20)
     .attr('y',function (d,i) {
-        return height+13+i*textPadding;
+        return height+123+i*textPadding;
     })
     .text(function (d) {
         return d.label;
@@ -109,3 +109,102 @@ svg.selectAll('.labels')
     .style('alignment-baseline','hanging')
     .style('font-weight','bold')
 
+svg.append('text')
+    .attr("x",30)
+    .attr('y',55)
+    .attr('fill','red')
+    .text('CASUAL GAMERS ')
+    .style('font-size',12)
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",140)
+    .attr('y',55)
+    .text('ARE SHIFTING TO LOW-COST ONLINE AND SMART-')
+    .style('font-size',12)
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",30)
+    .attr('y',70)
+    .text('PHONE GAMES.')
+    .style('font-size',12)
+    .style('font-weight','bold');
+//
+svg.append('text')
+    .attr("x",30)
+    .attr('y',105)
+    .text('TYPES OF ')
+    .style('font-size',12)
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",95)
+    .attr('y',105)
+    .attr('fill','red')
+    .text('ONLINE ')
+    .style('font-size',12)
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",150)
+    .attr('y',105)
+    .text('GAMES')
+    .style('font-size',12)
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",30)
+    .attr('y',120)
+    .text('PLAYED MOST OFTEN')
+    .style('font-size',12)
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",30)
+    .attr('y',135)
+    .text('in %')
+    .style('font-size',10)
+    .style('font-weight','bold');
+
+//
+svg.append('text')
+    .attr("x",325)
+    .attr('y',105)
+    .text('TYPES OF ')
+    .style('font-size',12)
+    .style('text-anchor','end')
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",380)
+    .attr('y',105)
+    .attr('fill','red')
+    .text('MOBILE ')
+    .style('font-size',12)
+    .style('text-anchor','end')
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",430)
+    .attr('y',105)
+    .text('GAMES')
+    .style('font-size',12)
+    .style('text-anchor','end')
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",430)
+    .attr('y',120)
+    .text('PLAYED MOST OFTEN')
+    .style('font-size',12)
+    .style('text-anchor','end')
+    .style('font-weight','bold');
+
+svg.append('text')
+    .attr("x",430)
+    .attr('y',135)
+    .text('in %')
+    .style('font-size',10)
+    .style('text-anchor','end')
+    .style('font-weight','bold');

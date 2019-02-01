@@ -1,9 +1,9 @@
 var svg = d3.select("body")
     .append("svg")
     .attr("width","480")
-    .attr("height","270")
+    .attr("height","320")
     .style('display', 'block');
-margin = {top: 45, right: 45, bottom: 30, left: 45};
+margin = {top: 95, right: 45, bottom: 30, left: 45};
 width = +svg.attr("width") - margin.left - margin.right;
 height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -20,7 +20,6 @@ var dataSet = [
     ]
 ];
 
-var padding = width/(5*dataSet.length);
 
 var segments = d3.arc()
     .innerRadius(0)
@@ -81,7 +80,7 @@ svg.selectAll('rect')
     .append('rect')
     .attr('x',margin.left+width/2)
     .attr('y',function (d,i) {
-        return height/2+i*textPadding;
+        return height/2+i*textPadding+50;
     })
     .attr('width',15)
     .attr('height',15)
@@ -96,7 +95,7 @@ svg.selectAll('.labels')
     .append('text')
     .attr('x',margin.left+width/2+20)
     .attr('y',function (d,i) {
-        return height/2+3+i*textPadding;
+        return height/2+3+i*textPadding+50;
     })
     .text(function (d) {
         return d.label;
@@ -107,18 +106,33 @@ svg.selectAll('.labels')
 
 svg.append('text')
     .attr('x',30)
-    .attr('y',35)
+    .attr('y',85)
     .text('VIDEO GAME SALES 2011, BY GENRE')
     .style('font-weight','bold')
     .style('font-size',14)
 
 svg.append('text')
     .attr('x',30)
-    .attr('y',50)
+    .attr('y',100)
     .text('in %')
     .style('font-weight','bold')
     .style('font-size',10)
 
+
+svg.append('text')
+    .attr('x',30)
+    .attr('y',35)
+    .text('BUT VIDEO GAME SALES ARE STILL DRIVEN BY ')
+    .style('font-weight','bold')
+    .style('font-size',14)
+
+svg.append('text')
+    .attr('x',365)
+    .attr('y',35)
+    .attr('fill','red')
+    .text('CORE GAMERS')
+    .style('font-weight','bold')
+    .style('font-size',14)
 
 
 
