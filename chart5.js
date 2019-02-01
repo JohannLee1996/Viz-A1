@@ -6,7 +6,7 @@ var svg = d3.select("body")
 
 var pieGenerator = d3.pie();
 var data = [42,25,33];
-var data2 = [47,12,41]
+var data2 = [47,12,41];
 var arcData = pieGenerator(data);
 var arcData2 = pieGenerator(data2);
 
