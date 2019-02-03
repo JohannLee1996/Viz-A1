@@ -45,7 +45,7 @@ for(j=0;j<dataSet.length;j++){
     arcData[j]=[{label: dataSet[j].name, startAngle: -Math.PI, endAngle: (dataSet[j].value/100)*(2*Math.PI)-Math.PI}];
 }
 
-console.log(arcData[0]);
+// console.log(arcData[0]);
 
 
 // Create a path element and set its d attribute
