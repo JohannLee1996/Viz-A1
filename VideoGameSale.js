@@ -1,9 +1,9 @@
 var svg = d3.select("body")
     .append("svg")
     .attr("width","480")
-    .attr("height","250")
+    .attr("height","270")
     .style('display', 'block');
-margin = {top: 50, right: 45, bottom: 20, left: 45};
+margin = {top: 60, right: 55, bottom: 30, left: 45};
 width = +svg.attr("width") - margin.left - margin.right;
 height = +svg.attr("height") - margin.top - margin.bottom;
 var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -53,18 +53,27 @@ g.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(xAxis)
     .selectAll("text")
-    .attr("y", 6)
+    .attr("y", 8)
+    .attr('class','bree')
     .style("text-anchor", "center")
-    .style("font-size","10px");
+    .style("font-size","11px");
 
 g.append("g")
     .call(customYAxis)
     .selectAll("text")
     .attr("y", 0)
     .attr("x", -6)
+    .attr('class','bree')
     .style("text-anchor", "end")
     .style("font-size","10px");
 
+
+// tip = d3.tip()
+//     .text(function (d) {
+//         return d.value;
+//     });
+//
+// g.call(tip)
 
 g.selectAll("rect")
     .data(dataSet)
@@ -80,7 +89,31 @@ g.selectAll("rect")
     .attr("height",function(d){
         return height*(d.value/yMax);
     })
-    .attr("fill","red");
+    .attr("fill","red")
+    .on('mouseover', function (d) {
+        d3.select(this).attr('fill','#ff8484');
+        var xPos = +d3.select(this).attr("x");
+        var yPos = +d3.select(this).attr('y');
+        var wid = +d3.select(this).attr("width");
+        d3.select(this).attr("x", xPos - 4).attr("width", wid + 8);
+        d3.select(this.parentNode).append('text')
+        .attr('class','tip')
+            .attr('text-anchor','middle')
+            .style('font-size',12)
+            .attr('fill','#600404')
+        .attr('x',xPos+rectPadding/4)
+        .attr('y',yPos-5)
+        .text(d.value);
+    })
+    .on('mouseout', function () {
+        d3.select(this).attr('fill','red');
+        var xPos = +d3.select(this).attr("x")
+        var wid = +d3.select(this).attr("width");
+        d3.select(this).attr("x", xPos + 4).attr("width", wid - 8);
+        d3.select('.tip').remove();
+
+
+    })
 
 function customYAxis(g) {
     g.call(yAxis);
@@ -88,21 +121,27 @@ function customYAxis(g) {
 }
 
 svg.append("svg:image")
-    .attr("x","390")
-    .attr("y","20")
-    .attr("width","60")
-    .attr("height","60")
+    .attr("x","360")
+    .attr("y","30")
+    .attr("width","75")
     .attr("xlink:href", "img/image4.jpg")
+    .on('mouseover', function () {
+        d3.select(this).attr('width',90);
+    })
+    .on('mouseout', function () {
+        d3.select(this).attr('width',75);
+    })
 
 svg.append("text")
     .attr("x",30)
     .attr("y",30)
     .text("U.S. COMPUTER AND VIDEO GAME SALES(PHYSICAL RETAIL)")
-    .style("font-size","15px");
+    .style("font-size","20px");
 
 svg.append("text")
     .attr("x",30)
-    .attr("y",40)
+    .attr("y",45)
+    .attr('class','bree')
     .text("in billion U.S. dollars")
     .style("font-size","12px");
 
